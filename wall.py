@@ -12,9 +12,9 @@ class Wall:
         screen.blit(self.image, (x, y))
 
 class Block:
-    def __init__(self, pos):
+    def __init__(self, pos, color="brown"):
         self.image = Surface((TILE_SIZE, TILE_SIZE))
-        self.image.fill(pg.Color("brown"))
+        self.image.fill(pg.Color(color))
         self.rect = self.image.get_rect(topleft=pos)
     def draw(self, screen, x, y):
         screen.blit(self.image, (x, y))

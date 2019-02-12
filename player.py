@@ -1,5 +1,6 @@
 import pygame as pg
 from options import *
+from battle import *
 
 class Player:
     def __init__(self, x, y, img):
@@ -9,6 +10,21 @@ class Player:
         self.rect.y = y
         self.moveAmount = TILE_SIZE
         self.moveCount = 0
+
+        self.battle_speed = 5
+        self.battle_y = 100
+        self.hp = 10
+
+    def turn(self, enemies, players):
+        enemies[0].hp -= 1
+
+    def update(self, enemies):
+        for enemy in enemies:
+            if self.rect.colliderect(enemy.rect):
+                if enemy.hp > 0:
+                    return True
+                else:
+                    enemies.remove(enemy)
 
     def move(self, x, y, walls):
         self.rect.x += self.moveAmount*x
