@@ -1,4 +1,5 @@
 import pygame as pg
+from options import *
 
 class Camera:
     def __init__(self, target, world_size):
@@ -21,5 +22,5 @@ class Camera:
         for obj in objectList:
            # print(obj.x)
            # print(self.cam.x)
-            if obj.x < -self.cam.x+SCREEN_X and obj.x+obj.width > -self.cam.x and obj.y < -self.cam.y+SCREEN_Y and obj.y+obj.height > -self.cam.y:
-                obj.draw(screen, obj.x+self.cam.x, obj.y+self.cam.y)
+            if obj.rect.x < -self.cam.x+SCREEN_X and obj.rect.x+obj.rect.width > -self.cam.x and obj.rect.y < -self.cam.y+SCREEN_Y and obj.rect.y+obj.rect.height > -self.cam.y:
+                obj.draw(screen, obj.rect.x+self.cam.x, obj.rect.y+self.cam.y)

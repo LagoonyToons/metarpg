@@ -6,3 +6,7 @@ smallFont = pg.font.SysFont('pressstart2pregular', 24)
 regFont = pg.font.SysFont('pressstart2pregular', 36)
 bigFont = pg.font.SysFont('pressstart2pregular', 48)
 giantFont = pg.font.SysFont('pressstart2pregular', 64)
+
+IMAGE_PATH = "images/"
+
+TILE_SIZE = 32
