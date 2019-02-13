@@ -1,6 +1,8 @@
 import pygame as pg 
 from options import *
 import random
+import sys
+import time
 
 class Battle:
     def __init__(self, players, enemies, screen):
@@ -19,7 +21,6 @@ class Battle:
         self.gameLoop()
 
     def gameLoop(self):
-        print(len(self.enemies))
         dead = False
         while not dead:
             events = pg.event.get()
@@ -31,7 +32,11 @@ class Battle:
             dead = self.isDead()
     
     def screenHandler(self):
-        pass
+        for entity in self.entities:
+            self.screen.blit(entity.image, (100, entity.battle_y))
+        pg.display.update()
+        self.screen.fill(pg.Color("black"))
+        # time.sleep(.5)
 
     def moveSpeed(self):
         total = 0
@@ -39,9 +44,11 @@ class Battle:
             total += entity.battle_speed
 
         for entity in self.entities:
-            entity.battle_y -= round(entity.battle_speed/total)
+            entity.adjustY(self.totalMovement*entity.battle_speed/total)
+            #print(entity.battle_y)
             if entity.battle_y <= 0:
                 entity.turn(self.enemies, self.players)
+                entity.battle_y += 100
         
     def isDead(self):
         enemy_deathCount = 0

@@ -54,16 +54,16 @@ class Game:
         if self.player.moveCount == 0:
             if pressed[pg.K_a]:
                 self.player.move(-1,0,self.walls)
-                self.player.moveCount = 2
+                self.player.moveCount = 0
             elif pressed[pg.K_d]:
                 self.player.move(1,0,self.walls)
-                self.player.moveCount = 2
+                self.player.moveCount = 0
             elif pressed[pg.K_w]:
                 self.player.move(0,-1,self.walls)
-                self.player.moveCount = 2
+                self.player.moveCount = 0
             elif pressed[pg.K_s]:
                 self.player.move(0,1,self.walls)
-                self.player.moveCount = 2
+                self.player.moveCount = 0
         else:
             self.player.moveCount -= 1
 

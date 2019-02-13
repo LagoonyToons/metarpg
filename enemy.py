@@ -7,9 +7,12 @@ class Enemy:
         self.rect.x = x
         self.rect.y = y
 
-        self.battle_speed = 5
+        self.battle_speed = 10
         self.battle_y = 100
         self.hp = 10
+
+    def adjustY(self, changeAmount):
+        self.battle_y -= changeAmount
 
     def turn(self, enemies, players):
         players[0].hp -= 1
